@@ -1,5 +1,5 @@
 {
-  "name": "play-with-type-script",
+  "name": "play-with-typescript",
   "version": "1.0.0",
   "private": true,
   "description": "TypeScript API with React viewer (Vite) and nodemon",
