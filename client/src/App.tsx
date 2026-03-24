@@ -40,6 +40,25 @@ interface CardState {
   error?: string
 }
 
+function CardResponse({ state }: { state: CardState }) {
+  const ok = state.status !== undefined && state.status < 300
+  return (
+    <div className="card__body">
+      {state.body !== undefined && (
+        <div className="card__result" key={state.body}>
+          <span className={`badge ${ok ? 'badge--ok' : 'badge--err'}`}>
+            {state.status} {ok ? 'OK' : 'ERROR'}
+          </span>
+          <pre className="card__pre">{state.body}</pre>
+        </div>
+      )}
+      {state.error !== undefined && (
+        <pre className="card__pre card__pre--err" key={state.error}>{state.error}</pre>
+      )}
+    </div>
+  )
+}
+
 function EndpointCard({ endpoint, index }: { endpoint: Endpoint; index: number }) {
   const [state, setState] = useState<CardState>({ loading: false })
 
@@ -74,19 +93,7 @@ function EndpointCard({ endpoint, index }: { endpoint: Endpoint; index: number }
 
       <p className="card__desc">{endpoint.description}</p>
 
-      <div className="card__body">
-        {state.body !== undefined && (
-          <div className="card__result" key={state.body}>
-            <span className={`badge ${ok ? 'badge--ok' : 'badge--err'}`}>
-              {state.status} {ok ? 'OK' : 'ERROR'}
-            </span>
-            <pre className="card__pre">{state.body}</pre>
-          </div>
-        )}
-        {state.error !== undefined && (
-          <pre className="card__pre card__pre--err" key={state.error}>{state.error}</pre>
-        )}
-      </div>
+      <CardResponse state={state} />
 
       <button
         type="button"
@@ -134,8 +141,7 @@ function EchoCard({ index }: { index: number }) {
   return (
     <article
       className={`card ${settled ? (ok ? 'card--ok' : 'card--err') : ''}`}
-      style={{ animationDelay: `${index * 120}ms` }}
-    >
+      style={{ animationDelay: `${index * 120}ms` }}    >
       <div className="card__head">
         <span className="badge badge--post">POST</span>
         <code className="card__path">/api/echo</code>
@@ -144,6 +150,9 @@ function EchoCard({ index }: { index: number }) {
 
       <p className="card__desc">Send a JSON body — the server echoes it back with a timestamp.</p>
 
+      <label className="card__input-label">
+        Request body <span className="card__input-hint">— edit the JSON below</span>
+      </label>
       <textarea
         className="card__textarea"
         value={input}
@@ -153,19 +162,7 @@ function EchoCard({ index }: { index: number }) {
         aria-label="Request body"
       />
 
-      <div className="card__body">
-        {state.body !== undefined && (
-          <div className="card__result" key={state.body}>
-            <span className={`badge ${ok ? 'badge--ok' : 'badge--err'}`}>
-              {state.status} {ok ? 'OK' : 'ERROR'}
-            </span>
-            <pre className="card__pre">{state.body}</pre>
-          </div>
-        )}
-        {state.error !== undefined && (
-          <pre className="card__pre card__pre--err" key={state.error}>{state.error}</pre>
-        )}
-      </div>
+      <CardResponse state={state} />
 
       <button
         type="button"

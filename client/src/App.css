@@ -99,16 +99,16 @@
 
 .card__pre {
   margin: 0;
-  padding: 0.75rem;
+  padding: 1rem;
   border-radius: 7px;
   background: var(--code-bg);
   border: 1px solid var(--border);
   color: var(--text-h);
   font-family: var(--mono);
-  font-size: 0.775rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.65;
   overflow: auto;
-  max-height: 12rem;
+  max-height: 16rem;
   white-space: pre-wrap;
   word-break: break-word;
   animation: fadeIn 0.3s ease forwards;
@@ -142,9 +142,20 @@
 
 /* ── Textarea ── */
 
+.card__input-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-h);
+}
+
+.card__input-hint {
+  font-weight: 400;
+  color: var(--text);
+}
+
 .card__textarea {
-  font: 0.775rem/1.5 var(--mono);
-  padding: 0.65rem 0.75rem;
+  font: 0.9rem/1.65 var(--mono);
+  padding: 0.85rem 1rem;
   border-radius: 7px;
   border: 1.5px solid var(--border);
   background: var(--code-bg);
@@ -157,7 +168,9 @@
 }
 
 .card__textarea:focus {
-  border-color: var(--accent-border);
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--accent-bg);
 }
 
 /* ── Button ── */
