@@ -1,4 +1,4 @@
-# play-with-typescript
+# playing-with-typescript
 
 A full-stack TypeScript playground — Express API backend + React frontend built with Vite.
 
