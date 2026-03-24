@@ -1,0 +1,31 @@
+{
+  "name": "play-with-type-script",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript API with React viewer (Vite) and nodemon",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && npm run build --prefix client",
+    "start": "node dist/index.js",
+    "dev:server": "nodemon",
+    "dev:web": "npm run dev --prefix client",
+    "dev": "concurrently -n api,web -c blue,green \"npm run dev:server\" \"npm run dev:web\"",
+    "debug": "nodemon --config nodemon.debug.json"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.5.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
