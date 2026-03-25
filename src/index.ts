@@ -1,8 +1,9 @@
 import { createApp } from './app'
-import { PORT } from './config'
+import { NODE_ENV, PORT } from './config'
+import { logger } from './logger'
 
 const app = createApp()
 
 app.listen(PORT, () => {
-  console.log(`API listening on http://localhost:${PORT}`)
+  logger.info({ port: PORT, env: NODE_ENV }, 'API listening')
 })

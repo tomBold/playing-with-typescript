@@ -7,6 +7,10 @@ dist/
 client/dist/
 client/dist-ssr/
 
+# Test coverage
+coverage/
+client/coverage/
+
 # Logs
 *.log
 npm-debug.log*
